@@ -1,0 +1,13 @@
+
+body{
+  background: #5a21c1;
+}
+.button_wrapper button{ background: #07da67; border: none; margin: 0 0.5%; padding: 6px 10px; color: #fff; border-radius: 4px; cursor: pointer;}
+.main_wrapper{ width: 100%; display: flex; justify-content: space-between; margin: 25px auto; background: #5a21c1; padding: 25px; box-sizing: border-box; }
+.example-container{ width: 100%; background: #fff; }
+.main_wrapper .example-container{ width: 100%; border-radius: 5px;}
+.button_wrapper button:nth-child(2){ background:#e6362c!important; }
+.form_wrapper{ width: 700px; margin:50px auto; }
+.form_wrapper .title{ background: #673ab7; color: #fff; padding: 10px; text-transform: uppercase;}
+.form_wrapper .mat-form-field{ width: 100%;}
+.example-container  .filter{ padding-left: 2%; padding-top: 2%;}

@@ -1,0 +1,38 @@
+<mat-card class="form_wrapper">
+  <mat-card-title class="title">Edit Users</mat-card-title>
+  <div class="example-container">
+    <form [formGroup]="editForm" (submit)="submitForm()">
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Name" [formControl]="editForm.controls['name']">
+        <mat-error *ngIf="!editForm.controls['name'].valid && editForm.controls['name'].touched"> Name is Required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="text" matInput placeholder="Position" [formControl]="editForm.controls['position']">
+        <mat-error *ngIf="!editForm.controls['position'].valid && editForm.controls['position'].touched">Position is
+          Required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" matInput placeholder="Office" [formControl]="editForm.controls['office']">
+        <mat-error *ngIf="!editForm.controls['office'].valid && editForm.controls['office'].touched">Office is
+          Required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" matInput placeholder="Salary" [formControl]="editForm.controls['salary']">
+        <mat-error *ngIf="!editForm.controls['salary'].valid && editForm.controls['salary'].touched">Salary is
+          Required
+        </mat-error>
+      </mat-form-field>
+
+      <br>
+      <button mat-raised-button color="primary">Update</button>
+    </form>
+  </div>
+</mat-card>
+
+
+

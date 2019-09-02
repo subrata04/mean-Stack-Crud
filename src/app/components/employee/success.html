@@ -1,0 +1,10 @@
+<!-- <p><strong>ID</strong> {{data._id}}</p> -->
+<p><strong>Name</strong> {{data.name}}</p>
+<p><strong>Position</strong> {{data.position}}</p>
+<p><strong>Office</strong> {{data.office}}</p>
+<p><strong>Salary</strong> $ {{data.salary}}</p>
+
+<div mat-dialog-actions>
+  <button mat-raised-button [routerLink]="['/edit', data._id]" color="primary" (click)=" onNoClick()">Edit</button>
+  <button mat-raised-button color="accent" [mat-dialog-close]="data._id" cdkFocusInitial>Close</button>
+</div>

@@ -1,0 +1,5 @@
+
+.form_wrapper{ width: 700px; margin:50px auto;  }
+.form_wrapper .title{ background: #673ab7; color: #fff; padding: 10px; text-transform: uppercase;}
+.form_wrapper .mat-form-field{ width: 100%;}
+.example-container  .filter{ padding-left: 2%; padding-top: 2%;}
