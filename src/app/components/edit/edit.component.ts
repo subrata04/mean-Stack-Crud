@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from '../../shared/employee.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -14,7 +14,7 @@ export class EditComponent implements OnInit {
   private id: string;
   constructor(private fb: FormBuilder, private actRoute: ActivatedRoute, private service: EmployeeService, private router: Router, private snackBar: MatSnackBar) {
     this.getEmployee(this.actRoute.snapshot.params['_id']);
-    this.id = this.actRoute.snapshot.params['_id']
+    this.id = this.actRoute.snapshot.params['_id'];
     this.editForm = this.fb.group({
       name: ['', Validators.required],
       position: ['', Validators.required],
@@ -26,7 +26,6 @@ export class EditComponent implements OnInit {
 
 
   ngOnInit() { }
-
   getEmployee(id) {
     this.service.getEmployeeById(id).subscribe(data => {
       let result: any = {};
@@ -41,6 +40,8 @@ export class EditComponent implements OnInit {
     });
 
   }
+
+
 
   // Update data to database
   submitForm(form: FormGroup) {

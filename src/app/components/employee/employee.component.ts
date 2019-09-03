@@ -6,8 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { FormBuilder, FormGroup, Validators, FormGroupDirective } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Router, ActivatedRoute} from '@angular/router';
-import { from } from 'rxjs';
+
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
@@ -16,9 +15,8 @@ import { from } from 'rxjs';
 
 export class EmployeeComponent implements OnInit {
 
-
-  private id:string;
-
+  private id: string;
+  // for reset form after submit
   @ViewChild(FormGroupDirective) formDirective: FormGroupDirective;
 
   public employee: any;
@@ -31,7 +29,7 @@ export class EmployeeComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private employeeService: EmployeeService, public fb: FormBuilder, private modal: MatDialog, private snackBar: MatSnackBar, private dialog: MatDialog) {
+  constructor(private employeeService: EmployeeService, public fb: FormBuilder, private snackBar: MatSnackBar, private dialog: MatDialog) {
     this.addform = this.fb.group({
       name: ['', Validators.required],
       position: ['', Validators.required],
@@ -44,7 +42,6 @@ export class EmployeeComponent implements OnInit {
 
   ngOnInit() {
     this.refreshEmployeeList();
-
   }
 
 
@@ -80,9 +77,9 @@ export class EmployeeComponent implements OnInit {
 
     });
   }
-  displayedColumns: string[] = [ 'name', 'position', 'office', 'salary', 'Action'];
+  displayedColumns: string[] = ['name', 'position', 'office', 'salary', 'Action'];
 
-  // Applyied filter
+  // Applied filter
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
@@ -97,11 +94,7 @@ export class EmployeeComponent implements OnInit {
   }
 
 
-  inputUntouch(form: any, val: any) {
-    console.log('on blur .....');
-    form.controls[val].markAsUntouched();
-  }
-  expression(row:any){
+  expression(row: any) {
     // console.log(row)
     const dialogRef = this.dialog.open(SuccessModal, {
       data: row
@@ -125,7 +118,7 @@ export class SuccessModal {
 
   constructor(
     public dialogRef: MatDialogRef<SuccessModal>,
-    @Inject(MAT_DIALOG_DATA) public data: Employee) {}
+    @Inject(MAT_DIALOG_DATA) public data: Employee) { }
 
   onNoClick(): void {
     this.dialogRef.close();

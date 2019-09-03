@@ -1,0 +1,57 @@
+<mat-card class="form_wrapper">
+  <mat-card-title class="title">Add Student</mat-card-title>
+  <div class="example-container">
+    <form [formGroup]="addStudent" (submit)="submitForm()">
+      <mat-form-field>
+        <input matInput placeholder="Student Name" [formControl]="addStudent.controls['studentName']">
+        <mat-error *ngIf="!addStudent.controls['studentName'].valid && addStudent.controls['studentName'].touched">
+          Student Name is Required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Batch No" [formControl]="addStudent.controls['batchNo']">
+        <mat-error *ngIf="!addStudent.controls['batchNo'].valid && addStudent.controls['batchNo'].touched">Batch No is
+          Required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Student Id" [formControl]="addStudent.controls['studentId']">
+        <mat-error *ngIf="!addStudent.controls['studentId'].valid && addStudent.controls['studentId'].touched">StudentId
+          Is Required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Select Batch" [formControl]="addStudent.controls['bactchTime']">
+          <mat-option value="option">-- Select --</mat-option>
+          <mat-option value="morning">Morning</mat-option>
+          <mat-option value="noon">Noon</mat-option>
+          <mat-option value="afternoon">Afternoon</mat-option>
+          <mat-option value="evening">Evening</mat-option>
+          <mat-option value="night">Night</mat-option>
+        </mat-select>
+        <mat-error *ngIf="!addStudent.controls['bactchTime'].valid && addStudent.controls['bactchTime'].touched"> Batch
+          time is
+          Required. </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Admission Date (MM/dd/yyyy)" format='MM/dd/yyyy'
+          [formControl]="addStudent.controls['admissionDate']">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="!addStudent.controls['admissionDate'].valid && addStudent.controls['admissionDate'].touched">
+         Admission Date is Required with mention format. </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="number" matInput placeholder="Tution Fees" [formControl]="addStudent.controls['tutionFees']"
+          class="quantity">
+        <mat-error *ngIf="!addStudent.controls['tutionFees'].valid && addStudent.controls['tutionFees'].touched">Tution
+          Fees Is Required
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" [disabled]="">Add Student</button>
+    </form>
+  </div>
+</mat-card>

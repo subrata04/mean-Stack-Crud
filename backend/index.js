@@ -3,7 +3,7 @@ const bodyparser = require('body-parser');
 const { mongoose } = require('./db.js');
 const cors = require('cors');
 var employeeController = require('./controllers/employeeControllers.js');
-
+var studentController = require ('./controllers/studentController')
 
 var app = express();
 var port = 3000;
@@ -12,3 +12,4 @@ app.use(bodyparser.json());
 app.listen(port, () => console.log('Server Connected at Port ' + port));
 
 app.use('/employees', employeeController);
+app.use('/students', studentController);

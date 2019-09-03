@@ -11,6 +11,7 @@ import { EmployeeService } from './shared/employee.service';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { EditComponent } from './components/edit/edit.component';
+import { StudentComponent } from './components/students/student/student.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { EditComponent } from './components/edit/edit.component';
     EmployeeComponent,
     SuccessModal,
     LoginComponent,
-    EditComponent
+    EditComponent,
+    StudentComponent
 
   ],
   imports: [
