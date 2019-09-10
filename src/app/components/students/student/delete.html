@@ -1,0 +1,8 @@
+<mat-card class="confirmDialog">
+  <mat-card-title>Are Sure to delete the Data?</mat-card-title>
+
+  <mat-dialog-actions align="center">
+    <button mat-raised-button color="primary" mat-dialog-close>Return</button>
+    <button mat-raised-button color="accent" (click)="onDelete(_id)">Delete</button>
+  </mat-dialog-actions>
+</mat-card>

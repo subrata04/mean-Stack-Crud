@@ -1,7 +1,6 @@
 const express = require('express');
 var router = express.Router();
 var ObjectId = require('mongoose').Types.ObjectId;
-
 var { Student } = require('../model/student');
 
 
@@ -58,14 +57,14 @@ router.put('/:id', (req, res) => {
   if (!ObjectId.isValid(req.params.id))
     return res.status(400).send(`No Data found with given id ${res.params.id}`);
 
-  var stdn = Student({
+  var stdn = {
     name: req.body.name,
     batchNo: req.body.batchNo,
     studentId: req.body.studentId,
     batchTime: req.body.batchTime,
     admissionDate: req.body.admissionDate,
-    tusionFees: req.body.tusionFees,
-  });
+    tusionFees: req.body.tusionFees
+  };
 
   Student.findByIdAndUpdate(req.params.id, { $set: stdn }, { new: false, useFindAndModify: false }, (err, doc) => {
     if (!err) {
@@ -76,19 +75,21 @@ router.put('/:id', (req, res) => {
     }
   })
 
+
+
   // delete employee
-  router.delete('/:id', (req, res) => {
-    if (!ObjectId.isValid(res.params.id))
+router.delete('/:id', (req, res) => {
+  if (!ObjectId.isValid(req.params.id))
     return res.status(400).send(`No record with given id : ${req.params.id}`);
 
-    Student.findByIdAndDelete(req.params.id, (req, doc) => {
-      if (!err) {
-        req.send(doc);
-      }
-      else {
-        console.log('data can not deleted' + JSON.stringify(err, undefined, 2));
-      }
-    })
+    Student.findByIdAndDelete(req.params.id, (err, doc) => {
+    if (!err) { res.send(doc); }
+    else {
+      console.log('Error In Student Delete' + JSON.stringify(err, undefined, 2));
+    }
   });
+});
+
+
 })
 module.exports = router;

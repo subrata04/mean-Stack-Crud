@@ -11,7 +11,7 @@ import { EmployeeService } from './shared/employee.service';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { EditComponent } from './components/edit/edit.component';
-import { StudentComponent } from './components/students/student/student.component';
+import { StudentComponent, EditComponent2, StudentDelete ,} from './components/students/student/student.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,9 @@ import { StudentComponent } from './components/students/student/student.componen
     SuccessModal,
     LoginComponent,
     EditComponent,
-    StudentComponent
+    StudentComponent,
+    EditComponent2,
+    StudentDelete
 
   ],
   imports: [
@@ -34,7 +36,9 @@ import { StudentComponent } from './components/students/student/student.componen
   providers: [EmployeeService],
   bootstrap: [AppComponent],
   entryComponents:[
-    SuccessModal
+    SuccessModal,
+    EditComponent2,
+    StudentDelete
   ]
 })
 export class AppModule { }

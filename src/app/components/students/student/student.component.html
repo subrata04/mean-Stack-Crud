@@ -3,26 +3,23 @@
   <div class="example-container">
     <form [formGroup]="addStudent" (submit)="submitForm()">
       <mat-form-field>
-        <input matInput placeholder="Student Name" [formControl]="addStudent.controls['studentName']">
-        <mat-error *ngIf="!addStudent.controls['studentName'].valid && addStudent.controls['studentName'].touched">
+        <input matInput placeholder="Student Name" [formControl]="addStudent.controls['name']">
+        <mat-error *ngIf="!addStudent.controls['name'].valid && addStudent.controls['name'].touched">
           Student Name is Required
         </mat-error>
       </mat-form-field>
 
       <mat-form-field>
         <input matInput placeholder="Batch No" [formControl]="addStudent.controls['batchNo']">
-        <mat-error *ngIf="!addStudent.controls['batchNo'].valid && addStudent.controls['batchNo'].touched">Batch No is
-          Required
+        <mat-error *ngIf="!addStudent.controls['batchNo'].valid && addStudent.controls['batchNo'].touched">Batch No is Required
         </mat-error>
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="Student Id" [formControl]="addStudent.controls['studentId']">
-        <mat-error *ngIf="!addStudent.controls['studentId'].valid && addStudent.controls['studentId'].touched">StudentId
-          Is Required
-        </mat-error>
+        <mat-error *ngIf="!addStudent.controls['studentId'].valid && addStudent.controls['studentId'].touched"> StudentId Is Required </mat-error>
       </mat-form-field>
       <mat-form-field>
-        <mat-select placeholder="Select Batch" [formControl]="addStudent.controls['bactchTime']">
+        <mat-select placeholder="Select Batch" [formControl]="addStudent.controls['batchTime']">
           <mat-option value="option">-- Select --</mat-option>
           <mat-option value="morning">Morning</mat-option>
           <mat-option value="noon">Noon</mat-option>
@@ -30,9 +27,7 @@
           <mat-option value="evening">Evening</mat-option>
           <mat-option value="night">Night</mat-option>
         </mat-select>
-        <mat-error *ngIf="!addStudent.controls['bactchTime'].valid && addStudent.controls['bactchTime'].touched"> Batch
-          time is
-          Required. </mat-error>
+        <mat-error *ngIf="!addStudent.controls['batchTime'].valid && addStudent.controls['batchTime'].touched"> Batch time is Required. </mat-error>
       </mat-form-field>
       <mat-form-field>
         <input matInput [matDatepicker]="picker" placeholder="Admission Date (MM/dd/yyyy)" format='MM/dd/yyyy'
@@ -40,18 +35,81 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
         <mat-error *ngIf="!addStudent.controls['admissionDate'].valid && addStudent.controls['admissionDate'].touched">
-         Admission Date is Required with mention format. </mat-error>
+          Admission Date is Required with mention format. </mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <input type="number" matInput placeholder="Tution Fees" [formControl]="addStudent.controls['tutionFees']"
+        <input type="number" matInput placeholder="Tution Fees" [formControl]="addStudent.controls['tusionFees']"
           class="quantity">
-        <mat-error *ngIf="!addStudent.controls['tutionFees'].valid && addStudent.controls['tutionFees'].touched">Tution
-          Fees Is Required
-        </mat-error>
+        <mat-error *ngIf="!addStudent.controls['tusionFees'].valid && addStudent.controls['tusionFees'].touched"> Tution Fees Is Required </mat-error>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" [disabled]="">Add Student</button>
+      <button mat-raised-button color="primary" [disabled]="!addStudent.valid"> Add Student </button>
     </form>
   </div>
 </mat-card>
+
+
+
+
+
+
+
+<!-- Table -->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="Student Name">
+    <th mat-header-cell *matHeaderCellDef> Student Name</th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="Batch No">
+    <th mat-header-cell *matHeaderCellDef> Batch No </th>
+    <td mat-cell *matCellDef="let element"> {{element.batchNo}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="Student Id">
+    <th mat-header-cell *matHeaderCellDef> Student Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.studentId}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Batch Time">
+    <th mat-header-cell *matHeaderCellDef> Batch Time </th>
+    <td mat-cell *matCellDef="let element"> {{element.batchTime}} </td>
+  </ng-container>
+
+  <!-- Admission Date -->
+  <ng-container matColumnDef="Admission Date">
+    <th mat-header-cell *matHeaderCellDef> Admission Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.admissionDate}} </td>
+  </ng-container>
+
+
+  <!-- Tusion Fees -->
+  <ng-container matColumnDef="Tusion Fees">
+    <th mat-header-cell *matHeaderCellDef> Tusion Fees </th>
+    <td mat-cell *matCellDef="let element"> {{element.tusionFees}} </td>
+  </ng-container>
+
+
+  <!-- Status Action -->
+  <ng-container matColumnDef="Action">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-button (click)="StudentEdit(element._id)"><i class="material-icons" > edit </i></button>
+      <button mat-button><i class="material-icons" (click)=" StudentDelete(element._id)"> delete </i></button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

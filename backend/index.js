@@ -3,7 +3,7 @@ const bodyparser = require('body-parser');
 const { mongoose } = require('./db.js');
 const cors = require('cors');
 var employeeController = require('./controllers/employeeControllers.js');
-var studentController = require ('./controllers/studentController')
+var studentController = require('./controllers/studentController')
 
 var app = express();
 var port = 3000;

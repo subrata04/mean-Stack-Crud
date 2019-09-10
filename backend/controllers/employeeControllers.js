@@ -55,9 +55,9 @@ router.put('/:id', (req, res) => {
     office: req.body.office,
     salary: req.body.salary
   };
-  Employee.findByIdAndUpdate(req.params.id, { $set: emp }, { new: false, useFindAndModify: false },  (err, doc) => {
+  Employee.findByIdAndUpdate(req.params.id, { $set: emp }, { new: false, useFindAndModify: false }, (err, doc) => {
     if (!err) {
-       res.send(doc);
+      res.send(doc);
 
     }
     else {

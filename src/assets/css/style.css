@@ -19,3 +19,9 @@ body{
   -moz-appearance: none;
   margin: 0;
 }
+.mat-dialog-container{ padding: 0!important; }
+
+.blue-snackbar {
+  background: #673ab7!important;
+}
+
